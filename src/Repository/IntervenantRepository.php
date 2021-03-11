@@ -35,8 +35,6 @@ class IntervenantRepository extends ServiceEntityRepository
         ;
     }
     */
-
-    /*
     public function findOneBySomeField($value): ?Intervenant
     {
         return $this->createQueryBuilder('i')
@@ -46,5 +44,5 @@ class IntervenantRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
-    */
+
 }
