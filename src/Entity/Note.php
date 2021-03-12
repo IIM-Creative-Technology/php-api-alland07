@@ -31,7 +31,7 @@ class Note
     private $etudiant;
 
     /**
-     * @ORM\OneToOne (targetEntity=Matiere::class)
+     * @ORM\ManyToOne (targetEntity=Matiere::class)
      * @ORM\JoinColumn(nullable=false)
      */
     private $matiere;

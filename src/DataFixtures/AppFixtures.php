@@ -6,6 +6,7 @@ use App\Entity\Classe;
 use App\Entity\Etudiant;
 use App\Entity\Intervenant;
 use App\Entity\Matiere;
+use App\Entity\Note;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectManager;
@@ -71,24 +72,42 @@ class AppFixtures extends Fixture
         $manager->flush();
 
         //Matieres
-        for ($i = 1;$i<=20;$i++){
+        for ($i = 1;$i<=5;$i++){
             $mat = new Matiere;
 
             /** @var Classe $classe */
-            $classe = $this->CR->findOneBy(['id'=>random_int(1,5)]);
+            $classe = $this->CR->findOneBy(['id'=>$i]);
 
             /** @var Intervenant $intervenant */
-            $intervenant = $this->IR->findOneBy(['id'=>random_int(1,10)]);
+            $intervenant = $this->IR->findOneBy(['id'=>$i]);
 
             $mat->setNom('Matiere n°'.$i);
             $dateUne = new \DateTime();
             $dateUne->setDate(2021,03,12);
             $dateDeux = new \DateTime();
             $dateDeux->setDate(2021,03,17);
-            $mat->setDateDebutFin();
+            $mat->setDateDebut($dateUne);
+            $mat->setDateFin($dateDeux);
             $mat->setClasse($classe);
             $mat->setIntervenant($intervenant);
             $manager->persist($mat);
+        }
+        $manager->flush();
+
+        //Notes
+        for ($i=1;$i<=5;$i++){
+            $note = new Note;
+            $note->setNote(random_int(0,20));
+
+            /** @var Etudiant $student */
+            $student = $this->SR->findOneBy(['id'=>$i]);
+            $note->setEtudiant($student);
+
+            /** @var Matiere $matiere */
+            $matiere = $this->MR->findOneBy(['id'=>random_int(1,5)]);
+            $note->setMatiere($matiere);
+
+            $manager->persist($note);
         }
         $manager->flush();
     }

@@ -3,12 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="cca06c81-cf2b-4f5b-9921-ec84d6e54aae" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210310170702.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Matiere.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Matiere.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Note.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Note.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/ClasseRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ClasseRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/EtudiantRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/EtudiantRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/IntervenantRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/IntervenantRepository.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,7 +139,9 @@
       <workItem from="1615044680272" duration="1458000" />
       <workItem from="1615309064029" duration="9110000" />
       <workItem from="1615407352076" duration="7615000" />
-      <workItem from="1615489904931" duration="13183000" />
+      <workItem from="1615489904931" duration="13314000" />
+      <workItem from="1615505352983" duration="60000" />
+      <workItem from="1615582524632" duration="4980000" />
     </task>
     <servers />
   </component>
@@ -154,5 +153,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1615497993441" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1615585862933">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1615585862933" />
   </component>
 </project>

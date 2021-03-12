@@ -25,9 +25,14 @@ class Matiere
     private $nom;
 
     /**
-     * @ORM\Column(type="dateinterval")
+     * @ORM\Column(type="date")
      */
-    private $dateDebutFin;
+    private $dateDebut;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $dateFin;
 
     /**
      * @ORM\OneToOne(targetEntity=Intervenant::class, inversedBy="matiere", cascade={"persist", "remove"})
@@ -58,14 +63,26 @@ class Matiere
         return $this;
     }
 
-    public function getDateDebutFin(): ?\DateInterval
+    public function getDateDebut(): ?\DateTimeInterface
     {
-        return $this->dateDebutFin;
+        return $this->dateDebut;
     }
 
-    public function setDateDebutFin(\DateInterval $dateDebutFin): self
+    public function setDateDebut(\DateTimeInterface $dateDebut): self
     {
-        $this->dateDebutFin = $dateDebutFin;
+        $this->dateDebut = $dateDebut;
+
+        return $this;
+    }
+
+    public function getDateFin(): ?\DateTimeInterface
+    {
+        return $this->dateFin;
+    }
+
+    public function setDateFin(\DateTimeInterface $dateFin): self
+    {
+        $this->dateFin = $dateFin;
 
         return $this;
     }
@@ -93,4 +110,6 @@ class Matiere
 
         return $this;
     }
+
+
 }
