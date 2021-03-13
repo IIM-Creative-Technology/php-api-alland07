@@ -7,9 +7,11 @@ use App\Entity\Etudiant;
 use App\Entity\Intervenant;
 use App\Entity\Matiere;
 use App\Entity\Note;
+use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AppFixtures extends Fixture
 {
@@ -22,14 +24,16 @@ class AppFixtures extends Fixture
     private $SR;
     private $IR;
     private $MR;
+    private $passwordEncoder;
 
-    public function __construct(EntityManagerInterface $em)
+    public function __construct(EntityManagerInterface $em, UserPasswordEncoderInterface $passwordEncoder)
     {
         $this->EM = $em;
         $this->CR = $this->EM->getRepository(Classe::class);
         $this->SR = $this->EM->getRepository(Etudiant::class);
         $this->IR = $this->EM->getRepository(Intervenant::class);
         $this->MR = $this->EM->getRepository(Matiere::class);
+        $this->passwordEncoder = $passwordEncoder;
     }
 
     public function load(ObjectManager $manager)
@@ -46,10 +50,8 @@ class AppFixtures extends Fixture
         //Etudiants
         for ($i = 1; $i<=10;$i++){
             $student = new Etudiant;
-
-            //Mettre dans le ReadMe de devoir
             $random = rand(1,5);
-            //typage de $classe afin de bien return
+            //Typage de $classe
             /** @var Classe $classe */
             $classe = $this->CR->findOneBy(['id'=>$random]);
             $student->setNom('Nom n°'.$i);
@@ -95,7 +97,7 @@ class AppFixtures extends Fixture
         $manager->flush();
 
         //Notes
-        for ($i=1;$i<=5;$i++){
+          for ($i=1;$i<=5;$i++){
             $note = new Note;
             $note->setNote(random_int(0,20));
 
@@ -108,6 +110,16 @@ class AppFixtures extends Fixture
             $note->setMatiere($matiere);
 
             $manager->persist($note);
+        }
+        $manager->flush();
+
+        $users = array("Nicolas","Alexis","Karine");
+        //Users
+        for($i=1;$i<=3;$i++){
+            $user = new User;
+            $user->setEmail($users[$i-1].'@edu.devinci.fr');
+            $user->setPassword($this->passwordEncoder->encodePassword($user,'password'));
+            $manager->persist($user);
         }
         $manager->flush();
     }
